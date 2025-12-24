@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background">
+
+    <!-- Иконка истории заказов -->
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="246dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="100dp"
+        android:paddingTop="5dp"
+        android:text="Суши – Толстый ниндзя"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/icon_history"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Иконка истории заказов -->
+    <ImageButton
+        android:id="@+id/icon_history"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_history2"
+        android:contentDescription="История заказов"
+        app:layout_constraintEnd_toStartOf="@+id/icon_cart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Иконка корзины -->
+    <ImageButton
+        android:id="@+id/icon_cart"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_cart"
+        android:contentDescription="Корзина"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Поиск -->
+    <RelativeLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/search_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_search" />
+
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="52dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:hint="Поиск суши, роллов..."
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="#708090" />
+    </RelativeLayout>
+
+    <!-- Фильтры -->
+    <HorizontalScrollView
+        android:id="@+id/scrollFilters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchLayout">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filtredAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Всё"
+                app:chipBackgroundColor="@color/chip_background"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filtredSushi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Суши"
+                app:chipBackgroundColor="@color/chip_background"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filtredRolls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Роллы"
+                app:chipBackgroundColor="@color/chip_background"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filtredDrinks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Напитки"
+                app:chipBackgroundColor="@color/chip_background"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filtredDesert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Десерты"
+                app:chipBackgroundColor="@color/chip_background"
+                app:chipStrokeColor="@color/colorPrimary"
+                app:chipStrokeWidth="1dp" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Список товаров -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/products_recycle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollFilters" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
